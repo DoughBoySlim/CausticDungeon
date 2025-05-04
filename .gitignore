@@ -1,0 +1,32 @@
+# Ignore Visual Studio folder
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build artifacts
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.log
+*.idb
+*.ipch
+*.aps
+*.ncb
+*.opendb
+*.tlog
+*.vcxproj.*
+*.cache
+
+# Ignore intermediate folders
+Debug/
+Release/
+x64/
+build/
+out/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
