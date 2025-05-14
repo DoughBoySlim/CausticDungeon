@@ -4,8 +4,10 @@
 
 Player::Player(std::string name) : BaseCharacter(100.f, 0.f, 0.f, name) { }
 
-void Player::movePlayer(char input, Dungeon& dungeon)
+
+void Player::movePlayer(char input, Dungeon& dungeon, bool previouslyMoved)
 {
+	didPlayerMove(previouslyMoved);
 	switch (input)
 	{
 	case 'W':
@@ -16,6 +18,7 @@ void Player::movePlayer(char input, Dungeon& dungeon)
 			x--;
 			dungeon.setVisited(x, y);
 		}
+		dungeon.printDungeon(*this);
 		break;
 	case 'S':
 	case 's':
@@ -25,7 +28,7 @@ void Player::movePlayer(char input, Dungeon& dungeon)
 			x++;
 			dungeon.setVisited(x, y);
 		}
-		dungeon.printDungeon(this);
+		dungeon.printDungeon(*this);
 		break;
 	case 'A':
 	case 'a':
@@ -35,6 +38,7 @@ void Player::movePlayer(char input, Dungeon& dungeon)
 			y--;
 			dungeon.setVisited(x, y);
 		}
+		dungeon.printDungeon(*this);
 		break;
 	case 'D':
 	case 'd':
@@ -44,12 +48,23 @@ void Player::movePlayer(char input, Dungeon& dungeon)
 			y++;
 			dungeon.setVisited(x, y);
 		}
+		dungeon.printDungeon(*this);
 		break;
 	default:
 		std::cout << "Invalid Input!\n";
 		break;
 	}
 
+}
+
+void Player::didPlayerMove(bool& previouslyMoved)
+{
+	if (previouslyMoved) {
+		system("cls");
+		previouslyMoved = false;
+		return;
+	}
+	previouslyMoved = true;
 }
 
 void Player::pickUpWeapon(std::string weaponType)

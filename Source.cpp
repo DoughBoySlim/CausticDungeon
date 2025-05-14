@@ -8,12 +8,11 @@ int main() {
 	Dungeon dungeon;
 	Player player1("Ethan");
 	dungeon.printDungeon(player1);
-	player1.movePlayer('D', dungeon);
-	player1.movePlayer('D', dungeon);
-	player1.movePlayer('D', dungeon);
-	player1.movePlayer('S', dungeon);
-	player1.movePlayer('S', dungeon);
+	player1.movePlayer('D', dungeon, true);
+	player1.movePlayer('D', dungeon, true);
+	player1.movePlayer('D', dungeon, true);
+	player1.movePlayer('S', dungeon, true);
+	player1.movePlayer('S', dungeon, true);
+	player1.movePlayer('S', dungeon, true);
 
-	std::cout << "---------------\n";
-	dungeon.printDungeon(player1);
 }
