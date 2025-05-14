@@ -1,6 +1,10 @@
 #pragma once
 #include <vector>
 #include "Room.h"
+
+class Player;
+
+
 class Dungeon
 {
 private:
@@ -15,6 +19,9 @@ public:
 
 	Dungeon();
 
-	void printDungeon();
+	void printDungeon(Player& player);
+	std::vector<std::vector<bool>> getVisited();
+	void setVisited(int x, int y);
+	void trackPlayerPosition();
 };
 

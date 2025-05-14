@@ -1,4 +1,5 @@
 #include "Dungeon.h"
+#include "Player.h"
 #include <iostream>
 #include "Room.h"
 #include <ctime>
@@ -25,11 +26,15 @@ Dungeon::Dungeon()
 	}
 }
 
-void Dungeon::printDungeon()
+void Dungeon::printDungeon(Player& player)
 {
 	for (int r = 0; r < rows; r++) {
 		for (int c = 0; c < cols; c++) {
-			if (visited[r][c] == false) {
+			if (r == player.getPlayerX() && c == player.getPlayerY()) {
+				std::cout << " P ";
+				visited[r][c] = true;
+			}
+			else if (visited[r][c] == true) {
 				Room::printRoomType(dungeon[r][c].getRoomType());
 			}
 			else {
@@ -38,4 +43,19 @@ void Dungeon::printDungeon()
 		}
 		std::cout << '\n';
 	}
+}
+
+std::vector<std::vector<bool>> Dungeon::getVisited()
+{
+	return visited;
+}
+
+void Dungeon::setVisited(int x, int y)
+{
+	visited[x][y] = true;
+}
+
+void Dungeon::trackPlayerPosition()
+{
+
 }
