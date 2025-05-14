@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Private\GameLoop.cpp" />
     <ClCompile Include="Private\BaseCharacter.cpp" />
     <ClCompile Include="Private\Player.cpp" />
     <ClCompile Include="Private\Dungeon.cpp" />
@@ -141,6 +142,7 @@
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Public\GameLoop.h" />
     <ClInclude Include="Public\BaseCharacter.h" />
     <ClInclude Include="Public\Player.h" />
     <ClInclude Include="Public\Dungeon.h" />

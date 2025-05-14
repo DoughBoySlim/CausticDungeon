@@ -5,9 +5,9 @@
 Player::Player(std::string name) : BaseCharacter(100.f, 0.f, 0.f, name) { }
 
 
-void Player::movePlayer(char input, Dungeon& dungeon, bool previouslyMoved)
+void Player::movePlayer(char input, Dungeon& dungeon)
 {
-	didPlayerMove(previouslyMoved);
+	bool moved = false;
 	switch (input)
 	{
 	case 'W':
@@ -16,9 +16,8 @@ void Player::movePlayer(char input, Dungeon& dungeon, bool previouslyMoved)
 			std::cout << "Invalid Move! You can't go out of Bounds\n";
 		else {
 			x--;
-			dungeon.setVisited(x, y);
+			moved = true;
 		}
-		dungeon.printDungeon(*this);
 		break;
 	case 'S':
 	case 's':
@@ -26,9 +25,8 @@ void Player::movePlayer(char input, Dungeon& dungeon, bool previouslyMoved)
 			std::cout << "Invalid Move! You can't go out of Bounds\n";
 		else {
 			x++;
-			dungeon.setVisited(x, y);
+			moved = true;
 		}
-		dungeon.printDungeon(*this);
 		break;
 	case 'A':
 	case 'a':
@@ -36,9 +34,8 @@ void Player::movePlayer(char input, Dungeon& dungeon, bool previouslyMoved)
 			std::cout << "Invalid Move! You can't go out of Bounds\n";
 		else {
 			y--;
-			dungeon.setVisited(x, y);
+			moved = true;
 		}
-		dungeon.printDungeon(*this);
 		break;
 	case 'D':
 	case 'd':
@@ -46,25 +43,20 @@ void Player::movePlayer(char input, Dungeon& dungeon, bool previouslyMoved)
 			std::cout << "Invalid Move! You can't go out of Bounds\n";
 		else {
 			y++;
-			dungeon.setVisited(x, y);
+			moved = true;
 		}
-		dungeon.printDungeon(*this);
 		break;
 	default:
 		std::cout << "Invalid Input!\n";
 		break;
 	}
 
-}
-
-void Player::didPlayerMove(bool& previouslyMoved)
-{
-	if (previouslyMoved) {
+	if (moved) {
+		dungeon.setVisited(x, y);
 		system("cls");
-		previouslyMoved = false;
-		return;
+		dungeon.printDungeon(*this);
 	}
-	previouslyMoved = true;
+
 }
 
 void Player::pickUpWeapon(std::string weaponType)

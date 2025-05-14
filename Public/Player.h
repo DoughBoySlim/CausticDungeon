@@ -16,8 +16,7 @@ public:
 
 	Player(std::string name);
 	
-	void movePlayer(char input, Dungeon& dungeon, bool previouslyMoved);
-	void didPlayerMove(bool& previouslyMoved);
+	void movePlayer(char input, Dungeon& dungeon);
 	void pickUpWeapon(std::string weaponType);
 	void playerRests(Dungeon& dungeon);
 
