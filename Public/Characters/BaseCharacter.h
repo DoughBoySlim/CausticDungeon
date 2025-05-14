@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 class BaseCharacter
 {
 
@@ -17,6 +18,10 @@ public:
 
 	// Attacking
 	void takeDamage(float damage);
+	virtual void attack(BaseCharacter& target);
+
+	// Dieing
+	virtual void die(BaseCharacter& character);
 
 
 	// Getters

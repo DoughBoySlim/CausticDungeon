@@ -1,7 +1,7 @@
-#include "Dungeon.h"
-#include "Player.h"
+#include "Map/Dungeon.h"
+#include "Characters/Player.h"
 #include <iostream>
-#include "Room.h"
+#include "Map/Room.h"
 #include <ctime>
 
 Dungeon::Dungeon()

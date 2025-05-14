@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Dungeon.h"
+#include "Map/Dungeon.h"
 #include <ctime>
-#include "Player.h"
+#include "Characters/Player.h"
 #include "Gameloop.h"
 
 int main() {

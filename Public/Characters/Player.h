@@ -1,5 +1,5 @@
 #pragma once
-#include "BaseCharacter.h"
+#include "Characters/BaseCharacter.h"
 
 class Dungeon;
 
@@ -10,6 +10,7 @@ private:
 	int y = 0;
 	int x = 0;
 	bool previouslyMoved = false;
+	int treasure = 0;
 
 
 public:
@@ -19,6 +20,7 @@ public:
 	void movePlayer(char input, Dungeon& dungeon);
 	void pickUpWeapon(std::string weaponType);
 	void playerRests(Dungeon& dungeon);
+	void die(BaseCharacter& character) override;
 
 	int getPlayerX();
 	int getPlayerY();

@@ -1,4 +1,4 @@
-#include "BaseCharacter.h"
+#include "Characters/BaseCharacter.h"
 #include <algorithm>
 
 BaseCharacter::BaseCharacter(float health, float damage, float armor, const std::string& name)
@@ -15,6 +15,10 @@ void BaseCharacter::takeDamage(float damage)
     if (damage > 0.0f) {
         healthPoints = std::clamp(healthPoints - damage, 0.0f, maxHealth);
     }
+}
+
+void BaseCharacter::attack(BaseCharacter& target)
+{
 }
 
 float BaseCharacter::getHealthPoints() const

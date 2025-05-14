@@ -131,22 +131,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Private\Characters\Goblin.cpp" />
     <ClCompile Include="Private\GameLoop.cpp" />
-    <ClCompile Include="Private\BaseCharacter.cpp" />
-    <ClCompile Include="Private\Player.cpp" />
-    <ClCompile Include="Private\Dungeon.cpp" />
-    <ClCompile Include="Private\Room.cpp" />
+    <ClCompile Include="Private\Characters\BaseCharacter.cpp" />
+    <ClCompile Include="Private\Characters\Player.cpp" />
+    <ClCompile Include="Private\Map\Dungeon.cpp" />
+    <ClCompile Include="Private\Map\Room.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Public\Characters\Goblin.h" />
     <ClInclude Include="Public\GameLoop.h" />
-    <ClInclude Include="Public\BaseCharacter.h" />
-    <ClInclude Include="Public\Player.h" />
-    <ClInclude Include="Public\Dungeon.h" />
-    <ClInclude Include="Public\Room.h" />
+    <ClInclude Include="Public\Characters\BaseCharacter.h" />
+    <ClInclude Include="Public\Characters\Player.h" />
+    <ClInclude Include="Public\Map\Dungeon.h" />
+    <ClInclude Include="Public\Map\Room.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

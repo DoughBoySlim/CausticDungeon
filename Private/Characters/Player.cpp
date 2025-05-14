@@ -1,6 +1,6 @@
-#include "Player.h"
+#include "Characters/Player.h"
 #include <iostream>
-#include "Dungeon.h"
+#include "Map/Dungeon.h"
 
 Player::Player(std::string name) : BaseCharacter(100.f, 0.f, 0.f, name) { }
 
@@ -84,6 +84,13 @@ void Player::playerRests(Dungeon& dungeon)
 	std::cout << "The player rests regaining health" << '\n';
 
 	dungeon.getVisited()[x][y] = true;
+}
+
+void Player::die(BaseCharacter& character) {
+	std::cout << "You Died! Game Over!\n";
+	// Insert Stats here
+	// Such as Enemies killed
+	// Treasure gained
 }
 
 int Player::getPlayerX()
