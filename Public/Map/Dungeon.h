@@ -21,5 +21,7 @@ public:
 	std::vector<std::vector<bool>> getVisited();
 	void setVisited(int x, int y);
 	void checkPlayerTile(Player& player);
+
+	void printVisited();
 };
 

@@ -16,6 +16,8 @@ void GameLoop::run()
 		std::cout << "Please Enter Your Movement (WASD)\n";
 
 		std::cin >> input;
+		dungeon.printVisited();
+		std::cout << "--------------------\n";
 		player.movePlayer(input, dungeon);
 		dungeon.checkPlayerTile(player);
 		

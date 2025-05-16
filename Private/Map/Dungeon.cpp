@@ -29,13 +29,13 @@ Dungeon::Dungeon()
 
 void Dungeon::printDungeon(Player& player)
 {
+	setVisited(0, 0);
 	for (int r = 0; r < rows; r++) {
 		for (int c = 0; c < cols; c++) {
 			if (r == player.getPlayerX() && c == player.getPlayerY()) {
 				std::cout << " P ";
-				setVisited(r, c);
 			}
-			else if (visited[r][c] == true) {
+			else if (visited[r][c]) {
 				Room::printRoomType(dungeon[r][c].getRoomType());
 			}
 			else {
@@ -60,12 +60,14 @@ void Dungeon::checkPlayerTile(Player& player)
 {
 	int x = player.getPlayerX();
 	int y = player.getPlayerY();
+	Room& room = dungeon[x][y];
 	Enemy enemy(0, 0, 0, "enemy");
 
 	Room::RoomType roomType = dungeon[x][y].getRoomType();
 	switch (roomType)
 	{
 	case Room::Enemy:
+		if (visited[x][y] == 1) return;
 		enemy.spawnEnemy();
 		break;
 	case Room::Treasure:
@@ -82,6 +84,17 @@ void Dungeon::checkPlayerTile(Player& player)
 		break;
 	default:
 		break;
+	}
+	setVisited(x, y);
+}
+
+void Dungeon::printVisited()
+{
+	for (int r = 0; r < 5; r++) {
+		for (int c = 0; c < 5; c++) {
+			std::cout << visited[r][c];
+		}
+		std::cout << '\n';
 	}
 }
 

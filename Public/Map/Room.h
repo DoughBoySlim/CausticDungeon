@@ -1,6 +1,9 @@
 #pragma once
 #include "cstdlib"
 #include <vector>
+
+class Enemy;
+
 class Room
 {
 public:

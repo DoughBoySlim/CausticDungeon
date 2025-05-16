@@ -12,5 +12,6 @@ public:
 
 	GameLoop(class Dungeon& dungeonRef, class Player& playerRef);
 	void run();
+
 };
 

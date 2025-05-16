@@ -58,8 +58,7 @@ void Player::movePlayer(char input, Dungeon& dungeon)
 	}
 
 	if (moved) {
-		dungeon.setVisited(x, y);
-		system("cls");
+		//system("cls");
 		dungeon.printDungeon(*this);
 	}
 

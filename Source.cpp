@@ -9,7 +9,7 @@ int main() {
 	Dungeon dungeon;
 	Player player("Ethan");
 	GameLoop game(dungeon, player);
-
+	
 	game.run();
 	return 0;
 }
