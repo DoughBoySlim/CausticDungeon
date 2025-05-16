@@ -2,7 +2,13 @@
 #include <iostream>
 #include "Map/Dungeon.h"
 
-Player::Player(std::string name) : BaseCharacter(100.f, 0.f, 0.f, name) { }
+Player::Player(std::string name) : BaseCharacter(100.f, 0.f, 0.f, name) 
+{
+	// hardcoded for 5 right now
+	// Need to change in future
+	// Would require passing in the instance of dungeon
+	rested.resize(5, std::vector<bool>(5, false));
+}
 
 
 void Player::movePlayer(char input, Dungeon& dungeon)
@@ -77,13 +83,31 @@ void Player::pickUpWeapon(std::string weaponType)
 
 void Player::playerRests(Dungeon& dungeon)
 {
-	if (dungeon.getVisited()[x][y]) {
+	if (dungeon.getVisited()[x][y] && rested[x][y]) {
 		std::cout << "You already rested in this room!" << '\n';
+		return;
 	}
-	setHealthPoints(std::min(getHealthPoints() + 20.f, getMaxHealth()));
-	std::cout << "The player rests regaining health" << '\n';
+	char wantsToRest = ' ';
+	if (getHealthPoints() == getMaxHealth()) {
+		std::cout << "You can not rest right now though because you are already at Max Health!\n";
+		return;
+	}
+	std::cout << "Would you like to rest in this room regaining health? (Y/N)\n";
+	std::cin >> wantsToRest;
+	if (wantsToRest == 'Y' || wantsToRest == 'y') {
+		setHealthPoints(std::min(getHealthPoints() + 20.f, getMaxHealth()));
+		std::cout << "The player rests regaining health!\n";
+		rested[x][y] = true;
+	}
+	else {
+		std::cout << "You decide not to rest!\n";
+		rested[x][y] = false;
+	}
+}
 
-	dungeon.getVisited()[x][y] = true;
+bool Player::didPlayerRest()
+{
+	return false;
 }
 
 void Player::die(BaseCharacter& character) {
@@ -101,4 +125,14 @@ int Player::getPlayerX()
 int Player::getPlayerY()
 {
 	return y;
+}
+
+std::vector<std::vector<bool>> Player::getRested()
+{
+	return rested;
+}
+
+void Player::setRested(int playerX, int playerY)
+{
+	rested[playerX][playerY] = true;
 }

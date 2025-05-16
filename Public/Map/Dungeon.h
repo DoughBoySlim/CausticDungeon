@@ -1,9 +1,7 @@
 #pragma once
 #include <vector>
-#include "Map/Room.h"
-
+#include "Room.h"
 class Player;
-
 
 class Dungeon
 {
@@ -22,6 +20,6 @@ public:
 	void printDungeon(Player& player);
 	std::vector<std::vector<bool>> getVisited();
 	void setVisited(int x, int y);
-	void trackPlayerPosition();
+	void checkPlayerTile(Player& player);
 };
 

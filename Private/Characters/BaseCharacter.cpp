@@ -21,6 +21,8 @@ void BaseCharacter::attack(BaseCharacter& target)
 {
 }
 
+void BaseCharacter::die(BaseCharacter& character) {}
+
 float BaseCharacter::getHealthPoints() const
 {
     return healthPoints;

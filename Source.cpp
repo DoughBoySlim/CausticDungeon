@@ -8,7 +8,6 @@ int main() {
 	std::srand(static_cast<unsigned>(std::time(0)));
 	Dungeon dungeon;
 	Player player("Ethan");
-
 	GameLoop game(dungeon, player);
 
 	game.run();
