@@ -1,7 +1,7 @@
 #pragma once
-#include "Characters/BaseCharacter.h"
+#include "Characters/Enemy/Enemy.h"
 
-class Goblin : public BaseCharacter
+class Goblin : public Enemy
 {
 public:
 
@@ -9,5 +9,6 @@ public:
 
 	void attack(BaseCharacter& target) override;
 	void die(BaseCharacter& character) override;
+	void spawn();
 };
 

@@ -131,7 +131,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Private\Characters\Goblin.cpp" />
+    <ClCompile Include="Private\Characters\Enemy\Orc.cpp" />
+    <ClCompile Include="Private\Characters\Enemy\Prisoner.cpp" />
+    <ClCompile Include="Private\Characters\Enemy\Enemy.cpp" />
+    <ClCompile Include="Private\Characters\Enemy\Goblin.cpp" />
     <ClCompile Include="Private\GameLoop.cpp" />
     <ClCompile Include="Private\Characters\BaseCharacter.cpp" />
     <ClCompile Include="Private\Characters\Player.cpp" />
@@ -143,7 +146,10 @@
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Public\Characters\Goblin.h" />
+    <ClInclude Include="Public\Characters\Enemy\Orc.h" />
+    <ClInclude Include="Public\Characters\Enemy\Prisoner.h" />
+    <ClInclude Include="Public\Characters\Enemy\Enemy.h" />
+    <ClInclude Include="Public\Characters\Enemy\Goblin.h" />
     <ClInclude Include="Public\GameLoop.h" />
     <ClInclude Include="Public\Characters\BaseCharacter.h" />
     <ClInclude Include="Public\Characters\Player.h" />

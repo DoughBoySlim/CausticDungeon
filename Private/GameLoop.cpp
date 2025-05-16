@@ -21,8 +21,7 @@ void GameLoop::run()
 		
 		std::cout << "Do you want to keep playing? (Y/N)\n";
 		std::cin >> playLonger;
-		
-
+	
 	}
 	return;
 }

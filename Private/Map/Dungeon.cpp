@@ -2,6 +2,7 @@
 #include "Characters/Player.h"
 #include <iostream>
 #include "Map/Room.h"
+#include "Characters/Enemy/Enemy.h"
 #include <ctime>
 
 Dungeon::Dungeon()
@@ -59,13 +60,13 @@ void Dungeon::checkPlayerTile(Player& player)
 {
 	int x = player.getPlayerX();
 	int y = player.getPlayerY();
+	Enemy enemy(0, 0, 0, "enemy");
 
 	Room::RoomType roomType = dungeon[x][y].getRoomType();
 	switch (roomType)
 	{
 	case Room::Enemy:
-		// Enemy Spawning Logic
-		std::cout << "You are facing an Enemy\n";
+		enemy.spawnEnemy();
 		break;
 	case Room::Treasure:
 		// Tresure Logic
