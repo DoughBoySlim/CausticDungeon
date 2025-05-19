@@ -5,7 +5,7 @@ Prisoner::Prisoner() : Enemy(10.f, 5.f, 2.f, "Prisoner") {}
 
 void Prisoner::attack(BaseCharacter& target) {
 	std::cout << "The prisoner attacks the player!\n";
-	std::cout << "This deals " << getAttackDamage() << "health\n";
+	std::cout << "This deals " << getAttackDamage() << " damage\n";
 
 	target.takeDamage(getAttackDamage());
 

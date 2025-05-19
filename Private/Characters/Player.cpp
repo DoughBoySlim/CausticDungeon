@@ -63,7 +63,7 @@ void Player::movePlayer(char input, Dungeon& dungeon)
 	}
 
 	if (moved) {
-		//system("cls");
+		system("cls");
 		dungeon.printDungeon(*this);
 	}
 

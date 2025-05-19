@@ -24,11 +24,9 @@ std::unique_ptr<Enemy> Enemy::spawnEnemy()
 		return std::make_unique<Goblin>();
 	case EnemyType::Orc:
 		enemyClass = "Orc";
-		std::cout << "An Orc was spawned\n";
 		return std::make_unique<Orc>();
 	case EnemyType::Prisoner:
 		enemyClass = "Prisoner";
-		std::cout << "A Prisoner was spawned\n";
 		return std::make_unique<Prisoner>();
 	default:
 		std::cout << "No Enemy Was Spawned!\n";

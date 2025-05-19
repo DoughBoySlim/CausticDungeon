@@ -13,9 +13,9 @@ void GameLoop::run()
 	char leave = ' ';
 	char playLonger = 'Y';
 	dungeonGrid.printDungeon(player);
-
-	std::cout << "You found a baseball bat!\n";
+	
 	player.setWeaponType(Player::WeaponType::Bat);
+	player.pickUpWeapon();
 	while (playLonger == 'Y' || playLonger == 'y') {
 
 
@@ -72,7 +72,11 @@ void GameLoop::attackPhase()
 			std::cout << "COMBAT HAS BEGUN!\n";
 			player.attack(*enemy);
 			enemyHealth = enemy->getHealthPoints();
-			std::cout << "The enemy has " << enemyHealth << " remaining!\n";
+			std::cout << "The enemy has " << enemyHealth << " health remaining!\n";
+			if (enemyHealth == 0) {
+				std::cout << "You killed the " << enemy->getEnemyClass() << "!\n";
+				return;
+			}
 			if (enemy->getArmorPoints() == 0) {
 				std::cout << "The enemies armor broke!\n";
 			}
@@ -87,7 +91,6 @@ void GameLoop::attackPhase()
 				std::cout << "You have " << player.getArmorPoints() << " remaining!\n";
 			}
 
-			std::cout << "Do you want to keep attacking?\n";
 			playerAttackChoice(choice);
 			if (choice != 'y' && choice != 'Y') {
 				return;
