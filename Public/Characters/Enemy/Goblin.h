@@ -9,6 +9,5 @@ public:
 
 	void attack(BaseCharacter& target) override;
 	void die(BaseCharacter& character) override;
-	void spawn();
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "cstdlib"
 #include <vector>
+#include <memory>
 
 class Enemy;
 
@@ -19,9 +20,13 @@ public:
 
 	static void printRoomType(RoomType roomType);
 
+	::Enemy* getEnemyPtr();
+
+	void setEnemyPtr(std::unique_ptr<::Enemy> newEnemy);
+
 private:
 
 	RoomType roomType;
-
+	std::unique_ptr<::Enemy> enemyPtr;
 };
 

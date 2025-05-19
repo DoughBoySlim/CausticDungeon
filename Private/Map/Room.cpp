@@ -29,4 +29,14 @@ void Room::printRoomType(RoomType roomType)
 	}
 }
 
+Enemy* Room::getEnemyPtr()
+{
+	return enemyPtr.get();
+}
+
+void Room::setEnemyPtr(std::unique_ptr<::Enemy> newEnemy)
+{
+	enemyPtr = std::move(newEnemy);
+}
+
 

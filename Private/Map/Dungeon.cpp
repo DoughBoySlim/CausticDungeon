@@ -61,14 +61,17 @@ void Dungeon::checkPlayerTile(Player& player)
 	int x = player.getPlayerX();
 	int y = player.getPlayerY();
 	Room& room = dungeon[x][y];
-	Enemy enemy(0, 0, 0, "enemy");
 
 	Room::RoomType roomType = dungeon[x][y].getRoomType();
 	switch (roomType)
 	{
 	case Room::Enemy:
 		if (visited[x][y] == 1) return;
-		enemy.spawnEnemy();
+		room.setEnemyPtr(Enemy::spawnEnemy());
+		Enemy* enemy = room.getEnemyPtr();
+		if (enemy) {
+			enemy->attack(player);
+		}
 		break;
 	case Room::Treasure:
 		// Tresure Logic
@@ -86,6 +89,13 @@ void Dungeon::checkPlayerTile(Player& player)
 		break;
 	}
 	setVisited(x, y);
+}
+
+Room& Dungeon::getDungeonRoom(Player& player)
+{
+	int x = player.getPlayerX();
+	int y = player.getPlayerY();
+	return dungeon[x][y];
 }
 
 void Dungeon::printVisited()

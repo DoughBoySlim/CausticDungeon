@@ -10,6 +10,10 @@ Player::Player(std::string name) : BaseCharacter(100.f, 0.f, 0.f, name)
 	rested.resize(5, std::vector<bool>(5, false));
 }
 
+void Player::attack(BaseCharacter& target) {
+	std::cout << 
+}
+
 
 void Player::movePlayer(char input, Dungeon& dungeon)
 {
@@ -64,19 +68,24 @@ void Player::movePlayer(char input, Dungeon& dungeon)
 
 }
 
-void Player::pickUpWeapon(std::string weaponType)
+void Player::pickUpWeapon()
 {
-	if (weaponType == "Sword") {
+	switch (weaponType)
+	{
+	case Player::WeaponType::Sword:
+		std::cout << "You pick up a great sword!\n";
 		setAttackDamage(20.f);
-		std::cout << "You picked up a Sword!" << '\n';
-	}
-	else if (weaponType == "Bat") {
-		setAttackDamage(5.f);
-		std::cout << "You picked up a Bat!\n";
-	}
-	else if (weaponType == "Axe") {
+		break;
+	case Player::WeaponType::Axe:
+		std::cout << "You pick up a mighty axe!\n";
 		setAttackDamage(10.f);
-		std::cout << "You picked up an Axe!\n";
+		break;
+	case Player::WeaponType::Bat:
+		std::cout << "You found a wooden bat!\n";
+		setAttackDamage(5.f);
+		break;
+	default:
+		break;
 	}
 }
 
@@ -124,6 +133,11 @@ int Player::getPlayerX()
 int Player::getPlayerY()
 {
 	return y;
+}
+
+void Player::setWeaponType(WeaponType weapontype)
+{
+	weaponType = weapontype;
 }
 
 std::vector<std::vector<bool>> Player::getRested()

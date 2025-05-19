@@ -24,6 +24,7 @@ std::unique_ptr<Enemy> Enemy::spawnEnemy()
 		std::cout << "A Prisoner was spawned\n";
 		return std::make_unique<Prisoner>();
 	default:
+		std::cout << "No Enemy Was Spawned!\n";
 		return nullptr;
 	}
 }

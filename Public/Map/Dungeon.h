@@ -22,6 +22,8 @@ public:
 	void setVisited(int x, int y);
 	void checkPlayerTile(Player& player);
 
+	Room& getDungeonRoom(Player& player);
+
 	void printVisited();
 };
 
