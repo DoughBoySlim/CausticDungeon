@@ -15,5 +15,9 @@ public:
 
 	void attackPhase();
 
+	char playerAttackChoice(char choice);
+	void playerExit();
+
+	void printStats();
 };
 

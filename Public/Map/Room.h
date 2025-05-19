@@ -2,6 +2,7 @@
 #include "cstdlib"
 #include <vector>
 #include <memory>
+#include "Characters/Enemy/Enemy.h"
 
 class Enemy;
 
@@ -16,7 +17,14 @@ public:
 		Exit
 	};
 	Room(RoomType type = static_cast<RoomType>(std::rand() % 3));
-	RoomType getRoomType();
+
+	Room(const Room&) = delete;
+	Room& operator=(const Room&) = delete;
+
+	Room(Room&&) noexcept = default;          
+	Room& operator=(Room&&) noexcept = default;
+
+	RoomType getRoomType() const;
 
 	static void printRoomType(RoomType roomType);
 

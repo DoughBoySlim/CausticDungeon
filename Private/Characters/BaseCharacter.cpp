@@ -12,8 +12,9 @@ BaseCharacter::BaseCharacter(float health, float damage, float armor, const std:
 
 void BaseCharacter::takeDamage(float damage)
 {
-    if (damage > 0.0f) {
-        healthPoints = std::clamp(healthPoints - damage, 0.0f, maxHealth);
+    if (damage > 0.0f && armorPoints > 0.0f) {
+        healthPoints = std::clamp(healthPoints - damage + armorPoints, 0.0f, maxHealth);
+        armorPoints = std::clamp(armorPoints - damage, 0.0f, armorPoints);
     }
 }
 

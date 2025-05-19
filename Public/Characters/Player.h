@@ -27,8 +27,10 @@ public:
 
 	int getPlayerX();
 	int getPlayerY();
+	int getTreasure();
 
 	void setWeaponType(WeaponType weapontype);
+	std::string getWeaponType();
 
 	std::vector<std::vector<bool>> getRested();
 	void setRested(int playerX, int playerY);

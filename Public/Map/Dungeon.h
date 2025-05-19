@@ -17,10 +17,17 @@ public:
 
 	Dungeon();
 
+	Dungeon(const Dungeon&) = delete;
+	Dungeon& operator=(const Dungeon&) = delete;
+
+	Dungeon(Dungeon&&) noexcept = default;
+	Dungeon& operator=(Dungeon&&) noexcept = default;
+
+
 	void printDungeon(Player& player);
 	std::vector<std::vector<bool>> getVisited();
 	void setVisited(int x, int y);
-	void checkPlayerTile(Player& player);
+	Room::RoomType checkPlayerTile(Player& player);
 
 	Room& getDungeonRoom(Player& player);
 

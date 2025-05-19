@@ -1,5 +1,6 @@
 #include "Map/Room.h"
 #include "cstdlib"
+#include "Characters/Enemy/Enemy.h"
 #include <iostream>
 
 
@@ -8,7 +9,7 @@ Room::Room(RoomType type)
 	roomType = type;
 }
 
-Room::RoomType Room::getRoomType()
+Room::RoomType Room::getRoomType() const
 {
 	return roomType;
 }

@@ -12,7 +12,7 @@ Dungeon::Dungeon()
 	for (int r = 0; r < rows; r++) {
 		for (int c = 0; c < cols; c++) {
 			if (r == 0 && c == 0) {
-				dungeon[r][c] = Room::RoomType::Rest;
+				dungeon[r][c] = Room(Room::RoomType::Rest);
 			}
 			else if (isExitSpawned) {
 				dungeon[r][c] = Room(static_cast<Room::RoomType>(std::rand() % 3));
@@ -56,39 +56,12 @@ void Dungeon::setVisited(int x, int y)
 	visited[x][y] = true;
 }
 
-void Dungeon::checkPlayerTile(Player& player)
+Room::RoomType Dungeon::checkPlayerTile(Player& player)
 {
 	int x = player.getPlayerX();
 	int y = player.getPlayerY();
-	Room& room = dungeon[x][y];
-
-	Room::RoomType roomType = dungeon[x][y].getRoomType();
-	switch (roomType)
-	{
-	case Room::Enemy:
-		if (visited[x][y] == 1) return;
-		room.setEnemyPtr(Enemy::spawnEnemy());
-		Enemy* enemy = room.getEnemyPtr();
-		if (enemy) {
-			enemy->attack(player);
-		}
-		break;
-	case Room::Treasure:
-		// Tresure Logic
-		std::cout << "You are in a treasure room\n";
-		break;
-	case Room::Rest:
-		std::cout << "You entered a room you can rest in!\n";
-		player.playerRests(*this);
-		break;
-	case Room::Exit:
-		// Exit Logic
-		std::cout << "You are in the exit room\n";
-		break;
-	default:
-		break;
-	}
 	setVisited(x, y);
+	return dungeon[x][y].getRoomType();
 }
 
 Room& Dungeon::getDungeonRoom(Player& player)

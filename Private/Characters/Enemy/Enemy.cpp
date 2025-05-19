@@ -9,18 +9,25 @@
 Enemy::Enemy(float health, float damage, float armor, const std::string& name)
 	: BaseCharacter(health, damage, armor, name){}
 
+std::string Enemy::getEnemyClass()
+{
+	return enemyClass;
+}
+
 std::unique_ptr<Enemy> Enemy::spawnEnemy()
 {
 	EnemyType enemyType = static_cast<EnemyType>(std::rand() % 3);
 	switch (enemyType)
 	{
-	case EnemyType::Goblin:
-		std::cout << "A Goblin was spawned\n";
+	case EnemyType::Goblin:	
+		enemyClass = "Goblin";
 		return std::make_unique<Goblin>();
 	case EnemyType::Orc:
+		enemyClass = "Orc";
 		std::cout << "An Orc was spawned\n";
 		return std::make_unique<Orc>();
 	case EnemyType::Prisoner:
+		enemyClass = "Prisoner";
 		std::cout << "A Prisoner was spawned\n";
 		return std::make_unique<Prisoner>();
 	default:

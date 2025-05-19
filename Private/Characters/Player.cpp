@@ -11,7 +11,8 @@ Player::Player(std::string name) : BaseCharacter(100.f, 0.f, 0.f, name)
 }
 
 void Player::attack(BaseCharacter& target) {
-	std::cout << 
+	std::cout << "You swing your " << getWeaponType() << " at the enemy!\n";
+	target.takeDamage(getAttackDamage());
 }
 
 
@@ -135,9 +136,30 @@ int Player::getPlayerY()
 	return y;
 }
 
+int Player::getTreasure()
+{
+	return treasure;
+}
+
 void Player::setWeaponType(WeaponType weapontype)
 {
 	weaponType = weapontype;
+}
+
+std::string Player::getWeaponType()
+{
+	switch (weaponType)
+	{
+	case Player::WeaponType::Sword:
+		return "sword";
+	case Player::WeaponType::Axe:
+		return "axe";
+	case Player::WeaponType::Bat:
+		return "bat";
+	default:
+		return "bat";
+		break;
+	}
 }
 
 std::vector<std::vector<bool>> Player::getRested()
