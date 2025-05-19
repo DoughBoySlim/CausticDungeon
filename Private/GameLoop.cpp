@@ -22,7 +22,6 @@ void GameLoop::run()
 		std::cout << "Please Enter Your Movement (WASD)\n";
 
 		std::cin >> input;
-		dungeonGrid.printVisited();
 		std::cout << "--------------------\n";
 		player.movePlayer(input, dungeonGrid);
 		switch (dungeonGrid.checkPlayerTile(player))
@@ -90,10 +89,11 @@ void GameLoop::attackPhase()
 
 			std::cout << "Do you want to keep attacking?\n";
 			playerAttackChoice(choice);
+			if (choice != 'y' && choice != 'Y') {
+				return;
+			}
 		}
-		if (choice != 'y' && choice != 'Y') {
-			return;
-		}
+		
 	}
 }
 
@@ -107,8 +107,8 @@ char GameLoop::playerAttackChoice(char choice)
 void GameLoop::printStats()
 {
 	std::cout << "------ Game Over ------\n";
-	std::cout << "---- " << player.getName() << "'s Stats----\n";
-	std::cout << "---- " << player.getTreasure() << " treasure gained!\n";
+	std::cout << "---- " << player.getName() << "'s Stats ----\n";
+	std::cout << "-- " << player.getTreasure() << " treasure gained! --\n";
 }
 
 

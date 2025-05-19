@@ -36,5 +36,7 @@ std::unique_ptr<Enemy> Enemy::spawnEnemy()
 	}
 }
 
+std::string Enemy::enemyClass = "DefaultClass";
+
 
 

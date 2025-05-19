@@ -7,18 +7,19 @@
 
 Dungeon::Dungeon()
 {	
-	dungeon.resize(rows, std::vector<Room>(cols));
+	dungeon.resize(rows);
 	visited.resize(rows, std::vector<bool>(cols, false));
 	for (int r = 0; r < rows; r++) {
+		dungeon[r].reserve(cols);
 		for (int c = 0; c < cols; c++) {
 			if (r == 0 && c == 0) {
-				dungeon[r][c] = Room(Room::RoomType::Rest);
+				dungeon[r].emplace_back(Room(Room::RoomType::Rest));
 			}
 			else if (isExitSpawned) {
-				dungeon[r][c] = Room(static_cast<Room::RoomType>(std::rand() % 3));
+				dungeon[r].emplace_back(Room(static_cast<Room::RoomType>(std::rand() % 3)));
 			}
 			else {
-				dungeon[r][c] = Room(static_cast<Room::RoomType>(std::rand() % 4));
+				dungeon[r].emplace_back(Room(static_cast<Room::RoomType>(std::rand() % 4)));
 				if (dungeon[r][c].getRoomType() == Room::RoomType::Exit) {
 					isExitSpawned = true;
 				}
